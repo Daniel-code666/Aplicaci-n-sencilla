@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="*">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="../script/index.js"></script>
+    <title>DummyApi</title>
+</head>
+
+<body>
+    <div class="center">
+        <h1>Usuarios</h1>
+    </div>
+    <hr>
+    <div id="alerta" class="alert alert-info alert-dismissible fade show">
+        <button type="button" class="close" data-bs-dismiss="alert">&times;</button>
+        <strong>Mensaje</strong>
+        <p id="mensaje"></p>
+    </div>
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="left">
+                        <button class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            Crear usuario
+                        </button>
+                    </div>
+                </div>
+                <div class=" col-md-9">
+                    <div class="nav-btn-container right">
+                        <button class="prev-btn btn btn-primary btn-sm">Página anterior</button>
+                        <button class="next-btn btn btn-primary btn-sm">Página siguiente</button>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <table id="pager" class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Título</th>
+                        <th>Primer nombre</th>
+                        <th>Segundo nombre</th>
+                        <th>Imagen</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="usertb">
+
+                </tbody>
+            </table>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="nav-btn-container right">
+                        <button class="prev-btn btn btn-primary btn-sm">Página anterior</button>
+                        <button class="next-btn btn btn-primary btn-sm">Página siguiente</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Crear usuario</h5>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <label style="padding-left: 50px;">Título: </label>
+                        <div style="padding-left: 93px;">
+                            <select id="title" class="form-select">
+                                <option selected>Seleccione</option>
+                                <option value="mr">Mr</option>
+                                <option value="ms">Ms</option>
+                                <option value="mrs">Mrs</option>
+                                <option value="miss">Miss</option>
+                                <option value="dr">Dr</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label style="padding-left: 50px;">Primer nombre: </label>
+                        <div style="padding-left: 27px;">
+                            <input type="text" id="firstName">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label style="padding-left: 50px;">Segundo nombre:</label>
+                        <div style="padding-left: 10px;">
+                            <input type="text" id="lastName">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label style="padding-left: 50px;">Email:</label>
+                        <div style="padding-left: 95px;">
+                            <input type="email" id="email">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" id="crear" class="btn btn-primary">Crear</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Updt Modal -->
+    <div class="modal fade" id="updtModal" tabindex="-1" aria-labelledby="updtModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="updtModalLabel">Actualizar usuario</h5>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <label style="padding-left: 50px;">Id:</label>
+                        <div style="padding-left: 119px;">
+                            <input type="text" id="idUpdt" readonly>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label style="padding-left: 50px;">Título: </label>
+                        <div style="padding-left: 93px;">
+                            <select id="titleUpdt" class="form-select">
+                                <option selected>Seleccione</option>
+                                <option value="mr">Mr</option>
+                                <option value="ms">Ms</option>
+                                <option value="mrs">Mrs</option>
+                                <option value="miss">Miss</option>
+                                <option value="dr">Dr</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label style="padding-left: 50px;">Primer nombre: </label>
+                        <div style="padding-left: 27px;">
+                            <input type="text" id="firstNameUpdt">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label style="padding-left: 50px;">Segundo nombre:</label>
+                        <div style="padding-left: 10px;">
+                            <input type="text" id="lastNameUpdt">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" id="updt" class="btn btn-primary">Actualizar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br>
+</body>
+
+</html>
